@@ -156,12 +156,12 @@ class Item implements ItemInterface
      * Checks the new price to include BTC
      * values with more than 6 decimals.
      *
-     * @param string $price The price value to check
+     * @param mixed $price The price value to check
      * @throws \Exception
      */
     protected function checkPriceFormat($price)
     {
-        if (preg_match('/^[0-9]+?[\.,][0-9]{1,6}?$/', $price) !== 1) {
+        if (preg_match('/^[0-9]+?[\.,][0-9]{1,8}?$/', $price) !== 1) {
             throw new \Bitpay\Client\ArgumentException("Price must be formatted as a float");
         }
     }

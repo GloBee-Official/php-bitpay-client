@@ -173,7 +173,7 @@ class Client implements ClientInterface
             ->setUrl($data['url'])
             ->setStatus($data['status'])
             ->setBtcPrice($data['btcPrice'])
-            ->setPrice($data['price'])
+            ->setPrice((float) $data['price'])
             ->setInvoiceTime($data['invoiceTime'])
             ->setExpirationTime($data['expirationTime'])
             ->setCurrentTime($data['currentTime'])
