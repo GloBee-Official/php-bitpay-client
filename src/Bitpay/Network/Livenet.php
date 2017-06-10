@@ -24,7 +24,7 @@ class Livenet implements NetworkInterface
 
     public function getApiHost()
     {
-        return 'payb.ee';
+        return 'globee.com';
     }
 
     public function getApiPort()
