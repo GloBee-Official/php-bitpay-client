@@ -158,12 +158,11 @@ class Client implements ClientInterface
         $this->response = $this->sendRequest($request);
 
         $body = json_decode($this->response->getBody(), true);
-        $error_message = false;
-        $error_message = (!empty($body['error'])) ? $body['error'] : $error_message;
-        $error_message = (!empty($body['errors'])) ? $body['errors'] : $error_message;
-        $error_message = (is_array($error_message)) ? implode("\n", $error_message) : $error_message;
-        if (false !== $error_message) {
-            throw new \Exception($error_message);
+        if (isset($body['type']) && isset($body['message']) && $body['type'] == 'validationError') {
+            if (is_array($body['message'])) {
+                throw new \Exception(implode("\n", $body['message']));
+            }
+            throw new \Exception($body['message']);
         }
         $data = $body['data'];
         $invoiceToken = new \Bitpay\Token();
