@@ -24,7 +24,7 @@ class Testnet implements NetworkInterface
 
     public function getApiHost()
     {
-        return 'gustav.payb.ee';
+        return 'test.globee.com';
     }
 
     public function getApiPort()
