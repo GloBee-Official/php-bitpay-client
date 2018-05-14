@@ -188,10 +188,10 @@ class Client implements ClientInterface
             ->setInvoiceTime($data['invoiceTime'] / 1000)
             ->setExpirationTime($data['expirationTime'] / 1000)
             ->setCurrentTime($data['currentTime'] / 1000)
-            ->setBtcPaid($data['btcPaid'])
-            ->setRate($data['rate'])
+            ->setBtcPaid($data['amountPaid'])
+            ->setRate($data['exchangeRates']['BTC']['USD'])
             ->setExceptionStatus($data['exceptionStatus'])
-            ->setPaymentUrls($paymentUrls->setUrls($data['paymentUrls']));
+            ->setPaymentUrls($paymentUrls->setUrls($data['paymentCodes']));
 
         return $invoice;
     }
