@@ -178,12 +178,13 @@ class Client implements ClientInterface
         $invoiceToken = new \Bitpay\Token();
         $paymentUrls = new \Bitpay\PaymentUrlSet();
 
+        $btcPrice = bcdiv($data['paymentSubtotals']['BTC'], '100000000');
         $invoice
             ->setToken($invoiceToken->setToken($data['token']))
             ->setId($data['id'])
             ->setUrl($data['url'])
             ->setStatus($data['status'])
-            ->setBtcPrice($data['btcPrice'])
+            ->setBtcPrice($btcPrice)
             ->setPrice($data['price'])
             ->setInvoiceTime($data['invoiceTime'] / 1000)
             ->setExpirationTime($data['expirationTime'] / 1000)
@@ -617,12 +618,13 @@ class Client implements ClientInterface
         $invoiceToken = new \Bitpay\Token();
         $paymentUrls = new \Bitpay\PaymentUrlSet();
 
+        $btcPrice = bcdiv($data['paymentSubtotals']['BTC'], '100000000');
         $invoice
             ->setToken($invoiceToken->setToken($data['token']))
             ->setUrl($data['url'])
             ->setPosData($data['posData'])
             ->setStatus($data['status'])
-            ->setBtcPrice($data['btcPrice'])
+            ->setBtcPrice($btcPrice)
             ->setPrice($data['price'])
             ->setCurrency(new \Bitpay\Currency($data['currency']))
             ->setOrderId($data['orderId'])
